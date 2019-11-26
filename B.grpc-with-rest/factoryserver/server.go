@@ -22,7 +22,6 @@ func startGRPC() {
 	log.Println("gRPC server ready...")
 	grpcServer.Serve(lis)
 }
-
 func startHTTP() {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
