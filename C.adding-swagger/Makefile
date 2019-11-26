@@ -1,4 +1,5 @@
-GRPC_GATEWAY_DIR := $(shell go list -f '{{ .Dir }}' -m github.com/grpc-ecosystem/grpc-gateway 2> /dev/null)
+GRPC_GATEWAY_DIR := $(GOPATH)/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.12.1
+#GRPC_GATEWAY_DIR := $(shell go list -f '{{ .Dir }}' -m github.com/grpc-ecosystem/grpc-gateway 2> /dev/null)
 GO_INSTALLED := $(shell which go)
 PROTOC_INSTALLED := $(shell which protoc)
 PGGG_INSTALLED := $(shell which protoc-gen-grpc-gateway 2> /dev/null)
@@ -21,9 +22,8 @@ ifndef PGG_INSTALLED
 endif
 
 generate: install-tools
-	@rm -rf factory
+	@rm -rf factory/*.go
 	@rm -f www/swagger.json
-	@mkdir -p factory
 	@protoc \
 		-I/usr/local/include \
 		-I. \
@@ -38,6 +38,6 @@ build: generate
 	@rm -rf bin
 	@mkdir -p bin
 	@go generate ./...
-	@go build -o bin/server factoryserver/*.go
-	@go build -o bin/client factoryclient/*.go
+	@cd factoryserver && go build -o ../bin/server && cd ../
+	@cd factoryserver && go build -o ../bin/client && cd ../
 	@echo "Success! Binaries can be found in 'bin' dir"
