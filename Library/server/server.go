@@ -1,13 +1,14 @@
 package main
 
 import (
+	"api"
+	"fmt"
 	"context"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"google.golang.org/grpc"
 	"log"
 	"net/http"
 	"sync"
-	"api"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	"google.golang.org/grpc"
 )
 
 func startHTTP() {
@@ -47,14 +48,17 @@ func main() {
 
 }
 
-
 type LibServer struct {
 }
 
-func (s *LibServer)GetBook(ctx context.Context, in *api.GetBookRequest) (*api.Book, error) {
-	return nil, nil
+func (s *LibServer) GetBook(ctx context.Context, in *api.GetBookRequest) (*api.Book, error) {
+	fmt.Printf("req : %s \n", in)
+	fmt.Printf("name : %s \n", in.Name)
+	b := new(api.Book)
+	b.Name = "Go从入门到放弃"
+	return b, nil
 }
 
-func (s *LibServer)  CreateBook(ctx context.Context, in *api.CreateBookRequest) (*api.Book, error) {
+func (s *LibServer) CreateBook(ctx context.Context, in *api.CreateBookRequest) (*api.Book, error) {
 	return nil, nil
 }
