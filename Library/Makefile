@@ -36,7 +36,5 @@ generate: install-tools
 		--proto_path proto library.proto
 
 build: generate
-	@rm -rf bin
-	@mkdir -p bin
 	@cd server && go build -o library  && cd ../
 	@echo "Success! Binaries can be found in 'bin' dir"

@@ -12,7 +12,7 @@ option go_package = "api";
 service Library {
     rpc GetBook(GetBookRequest) returns (Book) {
         option (google.api.http) = {
-          get: "/v1/{name=shelves/*/books/*}"
+          get: "/v1/book/{name}"
         };
       };
       rpc CreateBook(CreateBookRequest) returns (Book) {

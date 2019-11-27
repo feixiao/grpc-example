@@ -285,7 +285,7 @@ func RegisterLibraryHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 }
 
 var (
-	pattern_Library_GetBook_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 2, 2, 1, 0, 4, 4, 5, 3}, []string{"v1", "shelves", "books", "name"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Library_GetBook_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "book", "name"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Library_CreateBook_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 2, 5, 2, 2, 3}, []string{"v1", "shelves", "parent", "books"}, "", runtime.AssumeColonVerbOpt(true)))
 )

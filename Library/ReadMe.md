@@ -1,7 +1,7 @@
 ## Library
 
 ```
-curl http://localhost:8080/v1/shelves/shelf1/books/book2
+curl http://localhost:8080/v1/books/book1
 ```
 
 #### 参考资料
